@@ -1,8 +1,16 @@
 """
 Follow the idea of K-means ++
+
+-Choose one center uniformly at random from among the data points.
+-For each data point x, compute D(x), the distance between x and the nearest center that has already been chosen.
+-Choose one new data point at random as a new center, using a weighted probability distribution where a point x is
+chosen with probability proportional to D(x)2.
+-Repeat Steps 2 and 3 until k centers have been chosen.
+-Now that the initial centers have been chosen, proceed using standard k-means clustering.
 """
 
 import sys
+import math 
 
 
 class Points (object): 
@@ -42,11 +50,35 @@ class Cluster(object):
       """
       Will consider each hospital as a cluster
       """
-      points = []
-      def __init__ (self, hospital, numberOfAmbulances, points):
+      def __init__ (self, x, y, points):
 
             if len(self.points)==0: self.points = points
+            self.centroidDistance = []
+            self.points = points[:2]
+            self.coord = (x, y)
             
+      def computeCentroid(self):
+            """
+            Compute the distance from the cluster to each point
+            """
+            for point in points:
+                  centroidDistance.append(distance(self.coord, self.points))
+
+      @staticmethod
+      def Distance(p1, p2):
+            """
+            Compute the euclidean distance of the 2 points
+            @param p = (x, y)
+            """
+            distance = math.sqrt(math.pow(p2[0]-p1[0], 2) + math.pow(p2[1] - p1[1], 2)) 
+            return distance
+            
+            
+
+def main():
+      """
+      Make the cluster and run the main loop
+      """
             
 
 if __name__ == "main":
