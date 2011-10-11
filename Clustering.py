@@ -1,27 +1,53 @@
+
+
+
+def parseDoc(fileName): 
+	f = open(fileName).read().split('\n')
+	cast = lambda x: [int(el) for el in x]
+	def getPersons(): 
+		for lines in f[1:]: 
+			if lines != '': yield cast(lines.split(',')) 
+			else: break 
+	persons = list(getPersons())
+	return persons
+
+
 class Points (object): 
       """
       """
-      Points = []
+      P = []
       def __init__ (self, infos):
             """
             @infos: list of (x, y, timeLeft)
             """
             self.infos = infos
             self.avgTimeLeft = sum(info[2] for info in self.infos) / (len(self.infos)+0.0)
-            sortByTimeLeft = sorted(self.infos, key = lambda self.infos: infos[2])
+            self.sortByTimeLeft = sorted(infos, key = lambda infos: infos[2])
+            self.parsing()
 
-      def self.parsing(self):
+      def parsing(self):
             """
             Parsing each point. if the point has a very low timeLeft, then give him a higher
             priority by doubling it.
-            Coeff: point in the first 3rd, tripple it
+            Coeff:
+            point in the first 3rd, tripple it
             point in the 2nd 3rd, double
             point in the 3rd 3rd, do nothing
             Append the total to Points
             """
-            for info in self.infos:
-            
-            
-            
+            for i, info in enumerate(self.sortByTimeLeft):
+                  if i< (int)(len(self.sortByTimeLeft)/(2.0)):
+                        self.P.append(self.sortByTimeLeft[i])
+                  if i< (int)(len(self.sortByTimeLeft)/(3.0)):
+                        self.P.append(self.sortByTimeLeft[i])
+                  self.P.append(self.sortByTimeLeft[i])
+
+      def __call__(self):       
+            return self.P
+
+class Cluster(object):
+      """
+      """
 
       
+
