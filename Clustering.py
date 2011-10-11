@@ -1,15 +1,8 @@
+"""
+Follow the idea of K-means ++
+"""
 
-
-
-def parseDoc(fileName): 
-	f = open(fileName).read().split('\n')
-	cast = lambda x: [int(el) for el in x]
-	def getPersons(): 
-		for lines in f[1:]: 
-			if lines != '': yield cast(lines.split(',')) 
-			else: break 
-	persons = list(getPersons())
-	return persons
+import sys
 
 
 class Points (object): 
@@ -47,7 +40,29 @@ class Points (object):
 
 class Cluster(object):
       """
+      Will consider each hospital as a cluster
       """
+      points = []
+      def __init__ (self, hospital, numberOfAmbulances, points):
 
+            if len(self.points)==0: self.points = points
+            
+            
+
+if __name__ == "main":
+      fileName = sys.argv[1]
+
+      def parseDoc(fileName): 
+            f = open(fileName).read().split('\n')
+            cast = lambda x: [int(el) for el in x]
+            def getPersons(): 
+                  for lines in f[1:]: 
+                        if lines != '': yield cast(lines.split(',')) 
+                        else: break
+            persons = list(getPersons())
+            return persons
       
-
+      infos = parseDoc(fileName)
+      points = Points(infos)
+      
+      
