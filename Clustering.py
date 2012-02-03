@@ -79,6 +79,9 @@ def main():
       """
       Make the cluster and run the main loop
       """
+      #0 Find the search space, defined as (min x, min y), (max, max y), max x, max y
+      #1 Take a random point inside the space.
+      
             
 
 if __name__ == "main":
